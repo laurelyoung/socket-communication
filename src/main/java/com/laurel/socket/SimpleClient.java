@@ -31,8 +31,8 @@ public class SimpleClient {
              * replace write("\n) with newLine(), newLine() is compatible for all operating systems.
              * serverWriter.write("\n");  -->  serverWriter.newLine();
              */
-            // say hello to server
-            serverWriter.write("Hello, server.");
+            // 客户端请求与服务器建立连接
+            serverWriter.write(Constants.CLIENT_REQUEST_CONNECT);
             serverWriter.newLine();
             serverWriter.flush();
 
@@ -40,13 +40,16 @@ public class SimpleClient {
             String reply;
             while ((reply = serverReader.readLine()) != null) {
                 // 不是服务器的自动回复, 说明是服务器控制台输入的消息, 这时才打印服务器传回的消息
-                if (!Constants.SERVER_REPLY_RECEIVE_OK.equals(reply)) {
-                    System.out.println("Server say: " + reply);
+                if (Constants.SERVER_REPLY_RECEIVE_OK.equals(reply)) {
+                    System.out.println("Connected!");
+                } else {
+                    System.out.println(reply);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     /**

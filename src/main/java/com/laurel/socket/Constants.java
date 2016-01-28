@@ -10,6 +10,11 @@ public class Constants {
     /**
      * 服务器自动回复的标志位, 表示成功接收到客户端信息
      */
-    public static final String SERVER_REPLY_RECEIVE_OK = "OK";
+    public static final String SERVER_REPLY_RECEIVE_OK = "ok";
+
+    /**
+     * 客户端请求标志位
+     */
+    public static final String CLIENT_REQUEST_CONNECT = "connect";
 
 }
