@@ -96,6 +96,7 @@ public class SimpleServer {
                         clientWriter.newLine();
                         clientWriter.flush();
                     } else {
+                        // 消息格式: 时间 客户端名称: 内容
                         line = dateFormat.format(new Date()) + "\t" + socket.getInetAddress().getHostName() + ": " + line;
                         System.out.println(line);
                         // 将每个客户端的消息转发给所有与服务器建立连接的客户端, 类似于QQ讨论组或QQ群
